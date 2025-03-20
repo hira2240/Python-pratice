@@ -1,5 +1,3 @@
-#array = [0]
-
 def power_arr(array): 
     #array = int(input("What is the length of the array?: "))
     #b = len(array)
