@@ -1,46 +1,28 @@
-queue = []
+A = [1, 2, 3, 4]
+B = [4, 5, 6, 7]
 
-def enqueue(): 
-    a = str(input('\nAdd an element to do list: \n'))
-    queue.append(a)
-    print(queue)
+n= len(A)
 
-def dequeue():
-    for i, element in enumerate(queue, 0): 
-        print(f"{i}. {element}")
-    a = int(input('\nWhich element would you like to mark as completed?: \n'))
-    if 0 <= a < len(queue): #this checks that the index a, is greater than or equal to zero and lesser than the length of the queue. the length of the queue which would be one more than the last valid index. 
-        queue.pop(a)
-        print('\nItem completed:', queue)
-    else: 
-        print('\nInvalid')
+for i in range(n):
+    B[i] = A[0]
+    for j in range(1, i+1):
+        B[i] = B[i] + A[j]
+    B[i] = B[i] / (i+1)
+print(B)
 
-def run():
-    b = input('\nWould you like to add or complete something from your to do list?: \n').lower()
-    option = b[:3]
-
-    options = {
-        'add' : enqueue,
-        'com' : dequeue
-    }
-    if option in options: 
-        do = options[option]()
-    else: 
-        print('invalid option')
-run()
-
-done = False
-while not done: 
-    run()
-    c = input('\nAre you done with adding or completing your to do list?: yes/no \n').lower()
-    if c == 'yes': 
-        done = True
-    elif c == 'no': 
-        done = False
-    else: 
-        print('Invalid')
-
-
-
-
-
+n = A.size 
+failed = FALSE 
+i = 1
+while(i <= n and not failed):
+    j = i+1
+    while(j <= n and not failed):
+        k = j+1
+        while(k <= n and not failed):
+            if(A[i] == A[j] or A[i]==A[k] or A[j] == A[k]):
+                failed = TRUE 
+            k = k+1
+        j = j+1
+    i = i+1
+if (failed):
+    return "fail"
+else return "success"
